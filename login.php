@@ -2,6 +2,14 @@
 session_start();
 include('includes/header.php');
 include('includes/navbar.php');
+if (isset($_SESSION['auth'])) {
+    if (!isset($_SESSION['message'])) {
+        $_SESSION['message'] = "You are already logged in";
+        $_SESSION['alert'] = "warning";
+    }
+    header("Location: index.php");
+    exit(0);
+}
 ?>
 
 <div class="py-5">
